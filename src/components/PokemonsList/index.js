@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.grey[50],
     color: theme.palette.grey[900],
   },
-  alerta: {
+  alert: {
     display: "flex",
     maxHeight: 30,
     justifyContent: "center",
@@ -38,15 +38,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const capitalizeFirstLetter = (word) =>
+  word.charAt(0).toUpperCase() + word.slice(1);
+
 const PokemonsList = () => {
   const classes = useStyles();
-  const [pokemons, setPokemons] = useState(null);
+  const [pokemonsNames, setPokemonsNames] = useState(null);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/")
       .then((r) => r.json())
       .then((json) => {
-        setPokemons(json.results);
+        setPokemonsNames(json.results.map(({ name }) => name));
       });
   }, []);
 
@@ -56,16 +59,16 @@ const PokemonsList = () => {
       aria-labelledby="nested-list-subheader"
       className={classes.root}
     >
-      {pokemons &&
-        pokemons.map(({ name }) => (
+      {pokemonsNames &&
+        pokemonsNames.map((name) => (
           <div key={name} className={classes.listItemContainer}>
             <ListItem button color="primary" className={classes.listItem}>
               <ListItemIcon>
                 <Avatar className={classes.avatar}>W</Avatar>
               </ListItemIcon>
-              <ListItemText primary={name} />
+              <ListItemText primary={capitalizeFirstLetter(name)} />
               <Alert
-                className={classes.alerta}
+                className={classes.alert}
                 variant="outlined"
                 severity="success"
               >

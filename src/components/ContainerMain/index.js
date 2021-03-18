@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const styles = makeStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.background.default,
-    height: "100vh",
   }
 }));
 
