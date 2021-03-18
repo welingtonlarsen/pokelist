@@ -1,37 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import ListSubheader from "@material-ui/core/ListSubheader";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Collapse from "@material-ui/core/Collapse";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import SendIcon from "@material-ui/icons/Send";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.primary.dark,
+    paddingLeft: 10,
+    paddingRight: 10,
+    color: theme.palette.grey[50],
   },
   nested: {
     paddingLeft: theme.spacing(4),
   },
-  listItem: {
-    backgroundColor: "#d1d9ff",
+  listItemContainer: {
+    marginBottom: 5,
   },
-  active: {
-    backgroundColor: "#d1d9ff"
-  }
+  listItem: {
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: 5,
+  },
+  avatar: {
+    background: theme.palette.grey[50],
+    color: theme.palette.grey[900],
+  },
+  alerta: {
+    display: "flex",
+    maxHeight: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    color: theme.palette.success.main,
+  },
 }));
 
 const PokemonsList = () => {
   const classes = useStyles();
+  const [pokemons, setPokemons] = useState(null);
+
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/pokemon/")
+      .then((r) => r.json())
+      .then((json) => {
+        setPokemons(json.results);
+      });
+  }, []);
 
   return (
     <List
@@ -39,18 +56,24 @@ const PokemonsList = () => {
       aria-labelledby="nested-list-subheader"
       className={classes.root}
     >
-      <ListItem button selected={true} classes={{ selected: classes.active }}>
-        <ListItemIcon>
-          <Avatar>H</Avatar>
-        </ListItemIcon>
-        <ListItemText primary="Sent mail" />
-      </ListItem>
-      <ListItem button className={classes.listItem}>
-        <ListItemIcon>
-          <Avatar>W</Avatar>
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItem>
+      {pokemons &&
+        pokemons.map(({ name }) => (
+          <div key={name} className={classes.listItemContainer}>
+            <ListItem button color="primary" className={classes.listItem}>
+              <ListItemIcon>
+                <Avatar className={classes.avatar}>W</Avatar>
+              </ListItemIcon>
+              <ListItemText primary={name} />
+              <Alert
+                className={classes.alerta}
+                variant="outlined"
+                severity="success"
+              >
+                New!
+              </Alert>
+            </ListItem>
+          </div>
+        ))}
     </List>
   );
 };
