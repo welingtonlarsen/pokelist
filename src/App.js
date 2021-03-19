@@ -7,6 +7,7 @@ import {
 import Header from "./components/Header";
 import PokemonsList from "./components/PokemonsList";
 import ContainerMain from "./components/ContainerMain";
+import './App.css'
 
 const styles = makeStyles((theme) => ({
   bodyContainer: {
@@ -35,7 +36,7 @@ const App = () => {
       background: {
         default: "#090C10",
       },
-      divider: "#104d7c",
+      divider: "#104d7c"
     },
   });
 

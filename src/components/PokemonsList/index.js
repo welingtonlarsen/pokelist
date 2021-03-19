@@ -5,6 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import TextField from "@material-ui/core/TextField";
 import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,6 +15,15 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 10,
     paddingRight: 10,
     color: theme.palette.grey[50],
+  },
+  input: {
+    marginBottom: 20,
+    backgroundColor: theme.palette.grey[50],
+    border: `2px solid ${theme.palette.divider}`,
+    borderRadius: 5,
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: 0,
+    },
   },
   nested: {
     paddingLeft: theme.spacing(4),
@@ -43,41 +53,61 @@ const capitalizeFirstLetter = (word) =>
 
 const PokemonsList = () => {
   const classes = useStyles();
+  const [search, setSearch] = useState("");
   const [pokemonsNames, setPokemonsNames] = useState(null);
+
+  const filteredPokemons = pokemonsNames && pokemonsNames.filter((name) => name.includes(search.toLowerCase()))
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/")
-      .then((r) => r.json())
+      .then((response) => response.json())
       .then((json) => {
         setPokemonsNames(json.results.map(({ name }) => name));
+        console.log("carreguei a pagina");
       });
   }, []);
 
   return (
-    <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      className={classes.root}
-    >
-      {pokemonsNames &&
-        pokemonsNames.map((name) => (
-          <div key={name} className={classes.listItemContainer}>
-            <ListItem button color="primary" className={classes.listItem}>
-              <ListItemIcon>
-                <Avatar className={classes.avatar}>W</Avatar>
-              </ListItemIcon>
-              <ListItemText primary={capitalizeFirstLetter(name)} />
-              <Alert
-                className={classes.alert}
-                variant="outlined"
-                severity="success"
-              >
-                New!
-              </Alert>
-            </ListItem>
-          </div>
-        ))}
-    </List>
+    <div>
+      <TextField
+        onChange={(event) => setSearch(event.target.value)}
+        focused={true}
+        size="small"
+        id="outlined-full-width"
+        placeholder="Filter by name"
+        fullWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        variant="outlined"
+        className={classes.input}
+      />
+      <List
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        className={classes.root}
+      >
+        {pokemonsNames &&
+          filteredPokemons.map((name) => (
+            <div key={name} className={classes.listItemContainer}>
+              <ListItem button color="primary" className={classes.listItem}>
+                <ListItemIcon>
+                  <Avatar className={classes.avatar}>W</Avatar>
+                </ListItemIcon>
+                <ListItemText primary={capitalizeFirstLetter(name)} />
+                <Alert
+                  className={classes.alert}
+                  variant="outlined"
+                  severity="success"
+                >
+                  New!
+                </Alert>
+              </ListItem>
+            </div>
+          ))}
+      </List>
+    </div>
   );
 };
 
