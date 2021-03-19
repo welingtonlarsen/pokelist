@@ -9,6 +9,18 @@ import TextField from "@material-ui/core/TextField";
 import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
+  bodyContainer: {
+    paddingTop: 20,
+    paddingBottom: 40,
+    [theme.breakpoints.up("sm")]: {
+      marginRight: "10%",
+      marginLeft: "10%",
+    },
+    [theme.breakpoints.up("md")]: {
+      marginRight: "20%",
+      marginLeft: "20%",
+    },
+  },
   root: {
     width: "100%",
     backgroundColor: theme.palette.primary.dark,
@@ -68,7 +80,7 @@ const PokemonsList = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.bodyContainer}>
       <TextField
         onChange={(event) => setSearch(event.target.value)}
         focused={true}

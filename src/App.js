@@ -7,21 +7,14 @@ import {
 import Header from "./components/Header";
 import PokemonsList from "./components/PokemonsList";
 import ContainerMain from "./components/ContainerMain";
-import './App.css'
-
-const styles = makeStyles((theme) => ({
-  bodyContainer: {
-    paddingTop: 20,
-    [theme.breakpoints.up("sm")]: {
-      marginRight: "10%",
-      marginLeft: "10%",
-    },
-    [theme.breakpoints.up("md")]: {
-      marginRight: "20%",
-      marginLeft: "20%",
-    },
-  },
-}));
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
+import "./App.css";
 
 const App = () => {
   const theme = createMuiTheme({
@@ -36,19 +29,22 @@ const App = () => {
       background: {
         default: "#090C10",
       },
-      divider: "#104d7c"
+      divider: "#104d7c",
     },
   });
-
-  const classes = styles();
 
   return (
     <ThemeProvider theme={theme}>
       <ContainerMain>
-        <Header />
-        <div className={classes.bodyContainer}>
-          <PokemonsList />
-        </div>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/pokemons/list" component={PokemonsList} />
+            <Route path="/" exact>
+              <Redirect to="/pokemons/list" />
+            </Route>
+          </Switch>
+        </Router>
       </ContainerMain>
     </ThemeProvider>
   );
