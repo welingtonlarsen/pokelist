@@ -15,6 +15,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import "./App.css";
+import PokemonDetails from "./components/PokemonDetails";
 
 const App = () => {
   const theme = createMuiTheme({
@@ -40,6 +41,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route path="/pokemons/list" component={PokemonsList} />
+            <Route path="/pokemon/:name" component={PokemonDetails} />
             <Route path="/" exact>
               <Redirect to="/pokemons/list" />
             </Route>

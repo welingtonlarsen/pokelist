@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -68,7 +69,9 @@ const PokemonsList = () => {
   const [search, setSearch] = useState("");
   const [pokemonsNames, setPokemonsNames] = useState(null);
 
-  const filteredPokemons = pokemonsNames && pokemonsNames.filter((name) => name.includes(search.toLowerCase()))
+  const filteredPokemons =
+    pokemonsNames &&
+    pokemonsNames.filter((name) => name.includes(search.toLowerCase()));
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/")
@@ -103,7 +106,14 @@ const PokemonsList = () => {
         {pokemonsNames &&
           filteredPokemons.map((name) => (
             <div key={name} className={classes.listItemContainer}>
-              <ListItem button color="primary" className={classes.listItem}>
+              <ListItem
+                component={Link}
+                to={`/pokemon/${name}`}
+                button
+                color="primary"
+                className={classes.listItem}
+                onClick={() => console.log("clicou")}
+              >
                 <ListItemIcon>
                   <Avatar className={classes.avatar}>W</Avatar>
                 </ListItemIcon>
