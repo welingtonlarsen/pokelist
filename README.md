@@ -5,7 +5,7 @@
 
 <div align="center">
 
-# WhatsApp UI Clone
+# Pokelist
 This Pokelist was made with the aim to pratice more about some React JS libs.
 
 ![](https://img.shields.io/badge/Autor-Welington%20Larsen-brightgreen)
