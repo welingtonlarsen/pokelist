@@ -23,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center"
   },
   root: {
-    //maxWidth: 600,
-    //minWidth: 500,
     marginTop: 36,
     border: `5px solid ${theme.palette.divider}`,
     borderRadius: 10,
@@ -49,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     marginBottom: "0.35em",
   },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9,
+    marginTop: 30
+  }
 }));
 
 const PokemonDetails = () => {
@@ -87,7 +90,7 @@ const PokemonDetails = () => {
             <CardMedia
               component="img"
               alt="Contemplative Reptile"
-              height="250"
+              height="600"
               image={pokemon.sprites.front_default}
               title="Contemplative Reptile"
             />

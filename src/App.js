@@ -1,21 +1,20 @@
 import React from "react";
 import {
   createMuiTheme,
-  makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
 import Header from "./components/Header";
 import PokemonsList from "./components/PokemonsList";
 import ContainerMain from "./components/ContainerMain";
+import PokemonDetails from "./components/PokemonDetails"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
 import "./App.css";
-import PokemonDetails from "./components/PokemonDetails";
+
 
 const App = () => {
   const theme = createMuiTheme({
