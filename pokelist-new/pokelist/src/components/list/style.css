@@ -1,0 +1,23 @@
+.list {
+  background-color: #0D1117;
+  border: none;
+  padding: 10px;
+}
+
+.list-item {
+  max-height: 65px;
+  cursor: pointer;
+  border: 1px solid #174D7C !important;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: white;
+  font-size: 15px;
+}
+
+.avatar {
+  margin-right: 15px
+}
+
+.alert {
+  max-height: 30px;
+}
