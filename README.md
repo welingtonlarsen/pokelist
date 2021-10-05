@@ -8,7 +8,7 @@
 
 # Pokelist
 
-This Pokémon list was created with the aim to pratice more about some React JS libs.
+This Pokémon list was created with the aim to practice some React JS libs.
 
 ![](https://img.shields.io/badge/Autor-Welington%20Larsen-brightgreen)
 ![](https://img.shields.io/badge/Language-Javascript-brightgreen)
