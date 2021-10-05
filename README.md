@@ -1,6 +1,6 @@
 <div align="center">
 
-![](https://img.shields.io/badge/Status-Under%20Development-orange)
+![](https://img.shields.io/badge/Status-Done-brightgreen)
 
 </div>
 
@@ -8,7 +8,7 @@
 
 # Pokelist
 
-This Pokelist was created with the aim to pratice more about some React JS libs.
+This Pokémon list was created with the aim to pratice more about some React JS libs.
 
 ![](https://img.shields.io/badge/Autor-Welington%20Larsen-brightgreen)
 ![](https://img.shields.io/badge/Language-Javascript-brightgreen)
