@@ -1,5 +1,5 @@
 .list {
-  background-color: #0D1117;
+  background-color: #0d1117;
   border: none;
   padding: 10px;
 }
@@ -7,7 +7,7 @@
 .list-item {
   max-height: 65px;
   cursor: pointer;
-  border: 1px solid #174D7C !important;
+  border: 1px solid #174d7c !important;
   border-radius: 5px;
   margin-bottom: 5px;
   color: white;
@@ -15,7 +15,7 @@
 }
 
 .avatar {
-  margin-right: 15px
+  margin-right: 15px;
 }
 
 .alert {

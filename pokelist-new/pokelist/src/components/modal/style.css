@@ -1,7 +1,6 @@
 .modal-box .ant-modal-content {
   border-radius: 10px 10px 10px 10px;
   overflow: hidden;
-  /*pointer-events: none;*/
 }
 
 .modal-box .ant-modal-body {
@@ -15,9 +14,9 @@
 }
 
 .modal-box .ant-card-bordered {
-  border: 0
+  border: 0;
 }
 
-.modal-box .ant-card{
+.modal-box .ant-card {
   pointer-events: none;
 }

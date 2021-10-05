@@ -4,5 +4,5 @@ export interface Pokemon {
 }
 
 export interface ResponseApi {
-  data: {results: Pokemon[]}
+  data: { results: Pokemon[] };
 }
