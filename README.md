@@ -8,7 +8,7 @@
 
 # Pokelist
 
-This Pokémon list was created with the aim to practice some React JS libs.
+This Pokémon list was created as a concept proof about Typescript and Ant Design in React JS.
 
 ![](https://img.shields.io/badge/Autor-Welington%20Larsen-brightgreen)
 ![](https://img.shields.io/badge/Language-Javascript-brightgreen)
@@ -21,11 +21,10 @@ This Pokémon list was created with the aim to practice some React JS libs.
 - Javascript
 - React JS
 - Ant Design
-- React Router
 
 ## Execution
 
 - Scripts
-  ### Run the application (you can use npm or yarn)
-  - 1° command: `npm install`
-  - 2° command: `npm start`
+  ### Run the application
+  - 1° command: `yarn install`
+  - 2° command: `yarn start`
